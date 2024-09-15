@@ -1,0 +1,55 @@
+
+<div class="mainform">
+    <div class="name">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Enter your name" [(ngModel)]="name" (ngModelChange)="validateForm()">
+            <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+    </div>
+  
+    <div class="gender">
+        <mat-form-field class="genderr">
+            <mat-label>Gender</mat-label>
+            <mat-select>
+                <mat-option value="one">Male <mat-icon matSuffix>male</mat-icon></mat-option>
+                <mat-option value="two">Female <mat-icon matSuffix>female</mat-icon></mat-option>
+                <mat-option value="three">Not preferred <mat-icon matSuffix>block</mat-icon></mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+  
+    <div class="example-container">
+        <mat-form-field class="class">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" (ngModelChange)="validateForm()" />
+            <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+  
+    <div class="marriage">
+        <label>Marital status: </label>
+        <mat-radio-group [formControl]="floatLabelControl" >
+            <mat-radio-button value="auto">Married <mat-icon>family_restroom</mat-icon></mat-radio-button>
+            <mat-radio-button value="always">Single <mat-icon>person</mat-icon></mat-radio-button>
+        </mat-radio-group>
+    </div>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" [(ngModel)]="mail" (ngModelChange)="validateForm()">
+     
+        <mat-error *ngIf="(emailFormControl.hasError('email') && !emailFormControl.hasError('required'))">Please enter a valid email address</mat-error>
+      
+       
+        <mat-error *ngIf="(emailFormControl.hasError('required'))">Email is <strong>required</strong></mat-error>
+      
+    </mat-form-field>
+  </div>
+  
+ 
+    <button class="btn button" mat-button type="submit" [disabled]="!formvalid" [routerLink]="'/homepage'" routerLinkActive="active">
+      Submit
+    </button>

@@ -1,0 +1,47 @@
+<div>
+    <p>
+        <mat-form-field appearance="fill">
+          <mat-label>first name  </mat-label>
+          <input matInput placeholder="first name" required>
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>naveen</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>last name</mat-label>
+          <input matInput placeholder="last name">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>migada</mat-hint>
+        </mat-form-field>
+      </p>
+      <mat-form-field >
+        <mat-label >create a strong password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="password" (ngModelChange)="validateForm()" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{hide? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div><mat-form-field class="second">
+        <mat-label>confirm your password</mat-label>
+        <input matInput [type]="hide? 'password' : 'text'"  required [(ngModel)]="password2" (ngModelChange)="validateForm()" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{hide? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field></div>
+</div>
+<div>
+    <button class="btn" type="submit" [disabled]="!formvalid" [routerLink]="'/login'" routerLinkActive="active">register</button>
+</div>
